@@ -17,19 +17,31 @@
 
 ![Desktop overview](docs/screenshots/desktop-overview.jpg)
 
+### 配件选择器
+
+![Component picker](docs/screenshots/component-picker.png)
+
 ### 兼容性选择器
 
 ![Compatibility picker](docs/screenshots/compatibility-picker.jpg)
 
-### 移动端布局
+### 价格与规格联动
 
-![Mobile layout](docs/screenshots/mobile-layout.jpg)
+![Price and specification linkage](docs/screenshots/price-spec-linkage.png)
+
+### 本地配置管理
+
+![Local configuration management](docs/screenshots/local-config-management.png)
 
 ### 配件参数调试与 3D 效果
 
 通过机箱颜色、风扇主体颜色、灯光颜色和灯光亮度控件，可以即时观察参数变化在 3D 主机中的呈现效果；同时支持组装状态与爆炸拆解视图切换。
 
 ![Parameter adjustment](docs/screenshots/parameter-adjustment.jpg)
+
+### 移动端布局
+
+![Mobile layout](docs/screenshots/mobile-layout.jpg)
 
 ## 技术栈
 
