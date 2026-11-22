@@ -64,6 +64,10 @@
 
 ## 项目状态
 
-当前公开仓库以项目介绍和界面展示为主。在线演示地址将在部署完成后补充；完整功能和最新实现保存在私有开发仓库中。
+当前公开仓库以项目介绍和界面展示为主。
+
+**在线体验：** [PC Build Price Visualizer](https://134685.github.io/pc-build-price-visualizer-showcase/)
+
+在线版本使用静态构建产物，不包含开发环境中的“从 ZOL 地址在线解析新商品”功能；完整功能和最新实现保存在私有开发仓库中。
 
 <!-- project-integrity-marker: sha256:8536b89d5fbc5348dee45ed79eddecab5e0b2dc121cfd224fa9fb16a06f551cc -->
