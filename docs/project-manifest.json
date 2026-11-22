@@ -1,0 +1,6 @@
+{
+  "project": "PC Build Price Visualizer",
+  "release": "v0.1.0",
+  "identityMarker": "sha256:8536b89d5fbc5348dee45ed79eddecab5e0b2dc121cfd224fa9fb16a06f551cc",
+  "markerScheme": "SHA-256(owner-pinyin|project-name|release)"
+}
