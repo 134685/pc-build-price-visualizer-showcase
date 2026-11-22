@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PC Build Price Visualizer</title>
+    <script type="module" crossorigin src="/pc-build-price-visualizer-showcase/assets/index-BcEMPg1p.js"></script>
+    <link rel="stylesheet" crossorigin href="/pc-build-price-visualizer-showcase/assets/index-Bt7Z8lK0.css">
+  </head>
+  <body>
+    <div id="app">
+      <header>
+        <div class="brand">
+          <span class="mark">P</span>
+          <div><strong>PC Build Price Visualizer</strong><small>探索配件、调整配置，直观了解整机价格</small></div>
+        </div>
+        <div class="header-actions"><button type="button" id="environmentToggle" aria-label="切换至白昼" title="切换至白昼"><span class="environment-icon" aria-hidden="true">☀</span><span>白昼</span></button><div class="header-status"><div class="status"><i></i>主机配置已载入</div><span class="release-version" aria-label="版本 v0.1.0">v0.1.0</span></div></div>
+      </header>
+      <main>
+        <div id="stage">
+          <canvas id="scene"></canvas>
+          <div class="stage-label">
+            <h1>3D 主机展示</h1>
+            <p>拖动旋转 · 双指/滚轮缩放</p>
+            <button id="reset" title="重置视角" aria-label="重置视角"><span aria-hidden="true">↺</span><span class="reset-text">重置视角</span></button>
+          </div>
+        </div>
+        <aside class="paper-stack" aria-label="主机档案">
+          <nav class="paper-tabs" aria-label="档案板块">
+            <button type="button" class="paper-tab active" data-paper-tab="overview" aria-controls="paper-overview" aria-pressed="true"><span>I</span>整机概况</button>
+            <button type="button" class="paper-tab" data-paper-tab="configuration" aria-controls="paper-configuration" aria-pressed="false"><span>II</span>主机配置</button>
+            <button type="button" class="paper-tab" data-paper-tab="components" aria-controls="paper-components" aria-pressed="false"><span>III</span>配件展示</button>
+            <button type="button" class="paper-collapse" aria-label="收纳卡片" title="收纳卡片">收纳</button>
+          </nav>
+          <div class="paper-sheet">
+          <div class="paper-summary"><span>整机参考总价</span><strong id="paperPrice">—</strong><small>非实时报价</small></div>
+          <section class="system-overview paper-panel" id="paper-overview" data-paper-panel="overview" aria-label="整机概况">
+            <div class="overview-heading">
+              <div><span class="eyebrow">SYSTEM OVERVIEW</span><h2>整机概况</h2></div>
+            </div>
+            <div class="overview-total">
+              <div class="overview-price-block">
+                <span class="overview-label" id="overviewPriceLabel">整机参考总价</span>
+                <strong id="overviewPrice">—</strong>
+              </div>
+              <span class="overview-price-note" id="overviewPriceNote">本地目录参考价 · 非实时</span>
+            </div>
+            <div class="overview-specs" id="overviewSpecs"></div>
+          </section>
+          <section class="paper-panel" id="paper-configuration" data-paper-panel="configuration" aria-label="主机配置" hidden>
+          <div class="panel-heading">
+            <div><span class="eyebrow">BUILD PROFILE</span><h2>主机配置</h2><span class="count">已选择0/9个配件</span></div>
+          </div>
+          <p class="sub">当前主机的固定硬件规格</p>
+          <div class="backup-actions"><button id="exportExcel" type="button">导出 Excel</button><button id="exportBackup" type="button">导出备份</button><button id="importBackup" type="button">导入备份</button><button class="clear-build" id="clearBuild" type="button">清空配置</button><input id="backupFile" type="file" accept=".json,application/json" hidden></div>
+          <section class="config-card" aria-label="当前主机配置"><div id="configRows"></div></section>
+          <section class="performance-card" aria-label="主机性能规格">
+            <div class="section-title"><span class="eyebrow">PERFORMANCE</span><span class="spec-note">规格展示</span></div>
+            <div id="performanceGrid"></div>
+            <p class="disclaimer">以上为硬件规格摘要，未包含实测跑分或游戏帧率。</p>
+          </section>
+          </section>
+          <section class="paper-panel" id="paper-components" data-paper-panel="components" aria-label="配件展示" hidden>
+          <div class="mode" role="group" aria-label="显示模式">
+            <button class="active" id="assembled">组装状态</button>
+            <button id="exploded">爆炸拆解</button>
+          </div>
+          <div class="parts-title"><span class="eyebrow">COMPONENTS</span><span>选择部件查看对应视角</span></div>
+          <div id="parts"></div>
+          <section class="appearance-tuning" aria-label="配件参数调试">
+            <div class="tuning-title"><strong>配件参数调试</strong><span class="eyebrow">APPEARANCE</span></div>
+            <div class="appearance-options">
+              <fieldset class="color-option">
+                <legend>机箱颜色</legend>
+                <div class="color-swatches">
+                  <label class="color-swatch"><input type="radio" name="caseColor" value="white" checked><span class="swatch-chip" style="--swatch-color:#ffffff"></span><span>白</span></label>
+                  <label class="color-swatch"><input type="radio" name="caseColor" value="black"><span class="swatch-chip" style="--swatch-color:#202226"></span><span>黑</span></label>
+                </div>
+              </fieldset>
+              <fieldset class="color-option">
+                <legend>风扇颜色</legend>
+                <div class="color-swatches">
+                  <label class="color-swatch"><input type="radio" name="fanBodyColor" value="black"><span class="swatch-chip" style="--swatch-color:#232629"></span><span>黑</span></label>
+                  <label class="color-swatch"><input type="radio" name="fanBodyColor" value="brown"><span class="swatch-chip" style="--swatch-color:#6b4632"></span><span>棕</span></label>
+                  <label class="color-swatch"><input type="radio" name="fanBodyColor" value="white" checked><span class="swatch-chip" style="--swatch-color:#ffffff"></span><span>白</span></label>
+                </div>
+              </fieldset>
+              <fieldset class="color-option">
+                <legend>风扇灯光颜色</legend>
+                <div class="color-swatches">
+                  <label class="color-swatch"><input type="radio" name="fanColor" value="red"><span class="swatch-chip" style="--swatch-color:#ff3548"></span><span>红</span></label>
+                  <label class="color-swatch"><input type="radio" name="fanColor" value="orange"><span class="swatch-chip" style="--swatch-color:#ff791f"></span><span>橙</span></label>
+                  <label class="color-swatch"><input type="radio" name="fanColor" value="gold"><span class="swatch-chip" style="--swatch-color:#ffd34d"></span><span>金</span></label>
+                  <label class="color-swatch"><input type="radio" name="fanColor" value="green"><span class="swatch-chip" style="--swatch-color:#45c86b"></span><span>绿</span></label>
+                  <label class="color-swatch"><input type="radio" name="fanColor" value="blue" checked><span class="swatch-chip" style="--swatch-color:#4aaeff"></span><span>蓝</span></label>
+                </div>
+              </fieldset>
+              <div class="fan-brightness">
+                <div class="fan-brightness-heading"><label for="fanBrightness">风扇灯光亮度</label><output id="fanBrightnessValue" for="fanBrightness">100%</output></div>
+                <input id="fanBrightness" type="range" min="0" max="150" step="5" value="100">
+              </div>
+            </div>
+          </section>
+          <div class="note"><span>GENERIC 3D MODEL  /  V1.0</span><p>几何形体用于展示装配关系，非实际生产尺寸。</p></div>
+          </section>
+          </div>
+        </aside>
+      </main>
+    </div>
+  </body>
+</html>
