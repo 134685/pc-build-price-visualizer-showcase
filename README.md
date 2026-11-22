@@ -25,6 +25,12 @@
 
 ![Mobile layout](docs/screenshots/mobile-layout.jpg)
 
+### 配件参数调试与 3D 效果
+
+通过机箱颜色、风扇主体颜色、灯光颜色和灯光亮度控件，可以即时观察参数变化在 3D 主机中的呈现效果；同时支持组装状态与爆炸拆解视图切换。
+
+![Parameter adjustment](docs/screenshots/parameter-adjustment.jpg)
+
 ## 技术栈
 
 - Three.js
